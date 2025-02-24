@@ -3,7 +3,6 @@ import { useFormContext } from 'react-hook-form';
 import { FormField } from '.';
 import { Heading2 } from '~/components/ui/Heading';
 import { formatPhoneNumber, formatPostCode } from './utils';
-
 type Props = {
   isOpen: boolean;
   handleClose: () => void;
@@ -16,9 +15,31 @@ const PAYMENT_METHODS = {
   convenienceStore: 'コンビニ決済',
 } as const;
 
-export const ConfirmModal = ({ isOpen, handleClose }: Props) => {
+type ApiResponse = {
+  success: boolean;
+  message?: string;
+};
+
+export const ConfirmModal = ({ isOpen, handleClose, handleConfirm }: Props) => {
   const methods = useFormContext<FormField>();
-  const { getValues } = methods;
+  const { getValues, handleSubmit } = methods;
+
+  const submit = (field: FormField): Promise<ApiResponse> => {
+    console.info('submit', field);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (Math.random() < 0.5) {
+          resolve({
+            success: true,
+            message: '注文が完了しました。',
+          });
+          handleConfirm();
+        } else {
+          reject(new Error('注文に失敗しました。'));
+        }
+      }, 1000);
+    });
+  };
 
   const paymentMethodKey = getValues('paymentMethod');
   const paymentMethodValue =
@@ -49,7 +70,11 @@ export const ConfirmModal = ({ isOpen, handleClose }: Props) => {
         </div>
         <div className="w-full border border-gray-300"></div>
       </div>
-      <div className="p-8">
+      <form
+        className="p-8"
+        // https://github.com/orgs/react-hook-form/discussions/8622#discussioncomment-5774089
+        onSubmit={(event) => void handleSubmit(submit)(event)}
+      >
         <div className="mb-4">
           <Heading2>お支払い方法</Heading2>
         </div>
@@ -84,7 +109,7 @@ export const ConfirmModal = ({ isOpen, handleClose }: Props) => {
             戻る
           </button>
         </div>
-      </div>
+      </form>
     </Modal>
   );
 };
