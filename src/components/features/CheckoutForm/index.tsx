@@ -118,7 +118,7 @@ export const CheckoutForm = () => {
                 </p>
               )}
             </div>
-            <div className="mb-4 flex flex-col gap-2">
+            <div className="mb-4 flex w-1/3 flex-col gap-2">
               <Label label="都道府県" required />
               <div className="rounded p-2 outline outline-gray-300 placeholder:text-gray-300">
                 <select className="w-full" {...register('prefecture')}>
