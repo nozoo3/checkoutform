@@ -104,7 +104,7 @@ export const CheckoutForm = () => {
                 <TextInput
                   placeHolder="0000000"
                   register={register('postCode', {
-                    required: '電話番号を入力してください',
+                    required: '郵便番号を入力してください',
                     pattern: {
                       value: /^[0-9]{7}$/,
                       message: '郵便番号は7桁の数字で入力してください',
