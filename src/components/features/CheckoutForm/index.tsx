@@ -46,7 +46,7 @@ export const CheckoutForm = () => {
   };
 
   return (
-    <div className="p-8">
+    <div className="m-auto max-w-3xl p-8">
       <Heading1>ご購入手続き</Heading1>
       <div className="mt-8">
         <Heading2>配送先住所</Heading2>
