@@ -55,21 +55,19 @@ export const ConfirmModal = ({ isOpen, handleClose, handleConfirm }: Props) => {
       bottom: 'auto',
       transform: 'translate(-50%, -50%)',
       padding: 0,
-      minWidth: '70%',
+      minWidth: '50%',
     },
   };
 
   return (
     <Modal style={customStyles} isOpen={isOpen} onRequestClose={handleClose}>
-      <div className="mb-4">
-        <div className="flex items-center justify-between p-2">
-          <p className="text-sm font-bold">購入内容確認</p>
-          <button className="cursor-pointer" onClick={handleClose}>
-            X
-          </button>
-        </div>
-        <div className="w-full border border-gray-300"></div>
+      <div className="flex items-center justify-between p-2">
+        <p className="text-sm font-bold">購入内容確認</p>
+        <button className="cursor-pointer" onClick={handleClose}>
+          X
+        </button>
       </div>
+      <div className="w-full border border-gray-300"></div>
       <form
         className="p-8"
         // https://github.com/orgs/react-hook-form/discussions/8622#discussioncomment-5774089
