@@ -57,6 +57,9 @@ export const CheckoutForm = () => {
           onSubmit={(event) => void handleSubmit(onSubmit)(event)}
         >
           <div className="mt-4 mb-8 flex flex-col p-8 outline outline-gray-300">
+            <p className="mb-4 bg-amber-100 p-2 text-xs text-amber-500 outline outline-amber-500">
+              ※配送先住所に誤りがある場合は、住所不明のため配送不可となります。送付先ご住所・郵便番号に誤りがないか十分にご確認をお願いいたします。
+            </p>
             <div className="mb-4 flex flex-col gap-2">
               <Label label="氏名" required />
               <div className="flex gap-2">
