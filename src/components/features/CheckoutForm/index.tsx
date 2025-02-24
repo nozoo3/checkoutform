@@ -53,8 +53,8 @@ export const CheckoutForm = () => {
       </div>
       <FormProvider {...methods}>
         <form
-          // eslint-disable-next-line @typescript-eslint/no-misused-promises
-          onSubmit={handleSubmit(onSubmit)}
+          // https://github.com/orgs/react-hook-form/discussions/8622#discussioncomment-5774089
+          onSubmit={(event) => void handleSubmit(onSubmit)(event)}
         >
           <div className="mt-4 mb-8 flex flex-col p-8 outline outline-gray-300">
             <div className="mb-4 flex flex-col gap-2">
