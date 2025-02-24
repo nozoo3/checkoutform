@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { ConfirmModal } from './ConfirmModal';
 import { useForm, FormProvider } from 'react-hook-form';
 import { Label } from '~/components/ui/Label';
 import { TextInput } from '~/components/ui/TextInput';
@@ -29,6 +31,7 @@ const PREFECTURES = [
 ];
 
 export const CheckoutForm = () => {
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
   const methods = useForm<FormField>({
     mode: 'onSubmit',
   });
@@ -41,7 +44,12 @@ export const CheckoutForm = () => {
         <Heading2>配送先住所</Heading2>
       </div>
       <FormProvider {...methods}>
-        <form>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            setShowConfirmModal(true);
+          }}
+        >
           <div className="mt-4 mb-8 flex flex-col p-8 outline outline-gray-300">
             <div className="mb-4 flex flex-col gap-2">
               <Label label="氏名" required />
@@ -125,6 +133,11 @@ export const CheckoutForm = () => {
             </button>
           </div>
         </form>
+        <ConfirmModal
+          isOpen={showConfirmModal}
+          handleClose={() => setShowConfirmModal(false)}
+          handleConfirm={() => setShowConfirmModal(false)}
+        />
       </FormProvider>
     </div>
   );
