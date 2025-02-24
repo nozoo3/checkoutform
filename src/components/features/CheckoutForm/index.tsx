@@ -18,6 +18,16 @@ export type FormField = {
   paymentMethod: PaymentMethod;
 };
 
+const PREFECTURES = [
+  { key: 'tokyo', value: '東京都' },
+  { key: 'kanagawa', value: '神奈川県' },
+  { key: 'saitama', value: '埼玉県' },
+  { key: 'chiba', value: '千葉県' },
+  { key: 'ibaraki', value: '茨城県' },
+  { key: 'tochigi', value: '栃木県' },
+  { key: 'gunma', value: '群馬県' },
+];
+
 export const CheckoutForm = () => {
   const methods = useForm<FormField>({
     mode: 'onSubmit',
@@ -56,7 +66,15 @@ export const CheckoutForm = () => {
             </div>
             <div className="mb-4 flex flex-col gap-2">
               <Label label="都道府県" required />
-              {/* Add Select component */}
+              <div className="rounded p-2 outline outline-gray-300 placeholder:text-gray-300">
+                <select className="w-full" {...register('prefecture')}>
+                  {PREFECTURES.map((prefecture) => (
+                    <option key={prefecture.key} value={prefecture.value}>
+                      {prefecture.value}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
             <div className="mb-4 flex flex-col gap-2">
               <Label label="市区町村" required />
