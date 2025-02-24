@@ -1,6 +1,7 @@
 import { useForm, FormProvider } from 'react-hook-form';
 import { Label } from '~/components/ui/Label';
 import { TextInput } from '~/components/ui/TextInput';
+import { Heading1, Heading2 } from '~/components/ui/Heading';
 
 type PaymentMethod = 'credit' | 'carrierPayment' | 'convenienceStore';
 
@@ -24,8 +25,10 @@ export const CheckoutForm = () => {
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-bold">ご購入手続き</h1>
-      <h2 className="mt-8 text-xl font-bold">配送先住所</h2>
+      <Heading1>ご購入手続き</Heading1>
+      <div className="mt-8">
+        <Heading2>配送先住所</Heading2>
+      </div>
       <FormProvider {...methods}>
         <form className="mt-4 flex flex-col p-8 outline outline-gray-300">
           <div className="mb-4 flex flex-col gap-2">
