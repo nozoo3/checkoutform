@@ -95,6 +95,17 @@ export const CheckoutForm = () => {
               register={register('paymentMethod')}
             />
           </div>
+          <div className="mt-8 flex flex-col items-center justify-center gap-2">
+            <button
+              type="submit"
+              className="w-1/3 cursor-pointer rounded bg-black px-8 py-2 font-bold text-white"
+            >
+              次へ進む
+            </button>
+            <button className="w-1/3 cursor-pointer rounded border border-black bg-white px-8 py-2 font-bold text-black">
+              戻る
+            </button>
+          </div>
         </form>
       </FormProvider>
     </div>
