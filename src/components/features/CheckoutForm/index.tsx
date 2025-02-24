@@ -161,6 +161,7 @@ export const CheckoutForm = () => {
           </div>
           <div className="mb-2 p-2 outline outline-gray-300">
             <RadioButton
+              defaultChecked
               name="クレジットカード(Visa, MasterCard, JCB, American Express)"
               value={'credit'}
               register={register('paymentMethod')}
