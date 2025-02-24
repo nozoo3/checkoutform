@@ -128,7 +128,10 @@ export const CheckoutForm = () => {
             >
               次へ進む
             </button>
-            <button className="w-1/3 cursor-pointer rounded border border-black bg-white px-8 py-2 font-bold text-black">
+            <button
+              type="button"
+              className="w-1/3 cursor-pointer rounded border border-black bg-white px-8 py-2 font-bold text-black"
+            >
               戻る
             </button>
           </div>
